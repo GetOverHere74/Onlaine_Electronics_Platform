@@ -3,7 +3,7 @@ from django.db import models
 from users.models import NULLABLE
 
 
-class Supplier(models.Model):
+class Provider(models.Model):
     """Модель поставщика"""
 
     SUPPLIER_TYPES = (
@@ -47,7 +47,7 @@ class Product(models.Model):
     model = models.CharField(max_length=250, **NULLABLE, verbose_name="Модель")
     release_date = models.DateTimeField(**NULLABLE, verbose_name="Дата выхода на рынок")
     supplier = models.ForeignKey(
-        Supplier, on_delete=models.CASCADE, **NULLABLE, verbose_name="Поставщик"
+        Provider, on_delete=models.CASCADE, **NULLABLE, verbose_name="Поставщик"
     )
 
     def __str__(self):
@@ -59,7 +59,7 @@ class Product(models.Model):
         ordering = ("title",)
 
 
-class Contract(models.Model):
+class Contact(models.Model):
     """Модель контакта"""
 
     email = models.EmailField(max_length=80, verbose_name="Email")
@@ -68,7 +68,7 @@ class Contract(models.Model):
     street = models.CharField(max_length=150, **NULLABLE, verbose_name="Улица")
     house_number = models.PositiveIntegerField(**NULLABLE, verbose_name="Номер дома")
     supplier = models.ForeignKey(
-        Supplier, on_delete=models.CASCADE, **NULLABLE, verbose_name="Поставщик"
+        Provider, on_delete=models.CASCADE, **NULLABLE, verbose_name="Поставщик"
     )
 
     def __str__(self):
