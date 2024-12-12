@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from online_platform.models import Provider, Product
+from online_platform.models import Provider, Product, Contact
 
 
 class ContactSerializer(serializers.ModelSerializer):
     """Сериализатор модели контактов"""
 
     class Meta:
-        model = Provider
+        model = Contact
         fields = "__all__"
 
 
