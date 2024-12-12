@@ -10,7 +10,7 @@ from online_platform.models import Provider, Product, Contact
 def debt_clear(self, request, queryset):
     count = queryset.update(debt=0.00)
     self.message_user(
-        request, f"{count} задолженности были успешно очищены.", messages.success
+        request, f"{count} задолженности были успешно очищены.", messages.WARNING
     )
 
 
